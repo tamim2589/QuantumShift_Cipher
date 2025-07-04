@@ -1,0 +1,32 @@
+QUANTUMSHIFT ENCRYPTION ALGORITHM
+
+Algorithm: QuantumShift Encrypt
+Input: plaintext (string), key (integer)
+Output: ciphertext (hexadecimal string)
+
+1. Initialize empty ciphertext list
+2. For each character in plaintext with position i:
+   a. Convert character to ASCII value val
+   b. Calculate rotated = (val + key + i) mod 256
+   c. Calculate mask = (key + i) mod 256
+   d. Compute encrypted = rotated XOR mask
+   e. Convert encrypted to 2-digit hexadecimal
+   f. Append to ciphertext list
+3. Join ciphertext list with spaces
+4. Return ciphertext string
+
+Algorithm: QuantumShift Decrypt
+Input: ciphertext (hexadecimal string), key (integer)
+Output: plaintext (string)
+
+1. Split ciphertext into hex values
+2. Initialize empty plaintext list
+3. For each hex value with position i:
+   a. Convert hex to integer encrypted
+   b. Calculate mask = (key + i) mod 256
+   c. Compute rotated = encrypted XOR mask
+   d. Calculate val = (rotated - key - i) mod 256
+   e. Convert val to character
+   f. Append to plaintext list
+4. Join plaintext list
+5. Return plaintext string
